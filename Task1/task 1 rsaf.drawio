@@ -1,0 +1,67 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="NXztwLOgogrwYlXFCOgX">
+    <mxGraphModel dx="1434" dy="731" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-1" value="AWS Cloud" style="points=[[0,0],[0.25,0],[0.5,0],[0.75,0],[1,0],[1,0.25],[1,0.5],[1,0.75],[1,1],[0.75,1],[0.5,1],[0.25,1],[0,1],[0,0.75],[0,0.5],[0,0.25]];outlineConnect=0;gradientColor=none;html=1;whiteSpace=wrap;fontSize=12;fontStyle=0;container=1;pointerEvents=0;collapsible=0;recursiveResize=0;shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_aws_cloud_alt;strokeColor=#232F3E;fillColor=none;verticalAlign=top;align=left;spacingLeft=30;fontColor=#232F3E;dashed=0;" vertex="1" parent="1">
+          <mxGeometry x="284" y="160" width="356" height="290" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-2" value="" style="sketch=0;points=[[0,0,0],[0.25,0,0],[0.5,0,0],[0.75,0,0],[1,0,0],[0,1,0],[0.25,1,0],[0.5,1,0],[0.75,1,0],[1,1,0],[0,0.25,0],[0,0.5,0],[0,0.75,0],[1,0.25,0],[1,0.5,0],[1,0.75,0]];outlineConnect=0;fontColor=#232F3E;fillColor=#7AA116;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.s3;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="196" y="90" width="78" height="78" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-3" value="" style="outlineConnect=0;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;shape=mxgraph.aws3.cloudfront;fillColor=#F58536;gradientColor=none;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="36" y="83" width="76.5" height="93" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-4" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="vt_VwikJIe0Ka1UGsgiO-1" source="vt_VwikJIe0Ka1UGsgiO-3" target="vt_VwikJIe0Ka1UGsgiO-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="106" y="240" as="sourcePoint" />
+            <mxPoint x="156" y="190" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.75;exitDx=0;exitDy=0;exitPerimeter=0;entryX=1;entryY=0.79;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="vt_VwikJIe0Ka1UGsgiO-1" source="vt_VwikJIe0Ka1UGsgiO-2" target="vt_VwikJIe0Ka1UGsgiO-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="88" y="211" as="sourcePoint" />
+            <mxPoint x="171" y="210" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-10" value="Cloudfront" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="44.25" y="180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-11" value="S3 Bucket" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="205" y="180" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-14" value="2" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="126" y="90" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-15" value="3" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="vt_VwikJIe0Ka1UGsgiO-1">
+          <mxGeometry x="126" y="168" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-5" value="Actor" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="250" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="vt_VwikJIe0Ka1UGsgiO-3">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="160" y="290" as="sourcePoint" />
+            <mxPoint x="440" y="350" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-7" value="" style="endArrow=classic;html=1;rounded=0;entryX=1;entryY=1;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="vt_VwikJIe0Ka1UGsgiO-5">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="314" y="310.0038356164383" as="sourcePoint" />
+            <mxPoint x="200" y="315.86" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-13" value="1" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-16" value="4" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="190" y="320" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="vt_VwikJIe0Ka1UGsgiO-17" value="&lt;li&gt;&lt;strong&gt;Users → CloudFront&lt;/strong&gt;: User requests content.&lt;/li&gt;&lt;li&gt;&lt;/li&gt;&lt;strong&gt;CloudFront → S3&lt;/strong&gt;: If the content is not cached, CloudFront fetches it from the S3 bucket.&lt;br&gt;&lt;div&gt;&lt;strong&gt;CloudFront → Users&lt;/strong&gt;: Content is returned to the users, either from cache or after being fetched from S3.&lt;br&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="130" y="500" width="450" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
