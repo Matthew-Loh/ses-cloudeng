@@ -8,9 +8,9 @@ https://docs.aws.amazon.com/whitepapers/latest/best-practices-api-gateway-privat
 Therefore as first iteration, I want to design something that works and not overly complicate stuff.
 Firstly let’s think about Functional and non-functional requirements. I don’t see any functional requirements in the problem except e-commerce platform, so non-functional will be : Multi-region, Highly available, Scalable, heavy loads, automatic scaling, load balancing, disaster recovery.
 
-Start with some Architecture styles to choose from: Monolithic, micro services, event driven, severless (lambda). Keep some principles in mind like DRY and KISS. Since we have the non-functional requirements of highly available, scalable, heavy loads, let’s think what happens if use Monolithic. It is highly coupled meaning need to replicate the application across multi region (according to the NF requirements). It is not highly available and If crash, everything crash with single points of failure. It is not really scalable and vertical scaling is expensive, harder to handle heavy load as cant scale everything in the app so will have bottlenecks. Therefore choose Microservices (use Event driven Style) so that it is easier to deploy services regionally (multi region), each service is independant isolating failures (highly available), you can scale horizontally instead of vertically (both scalable and heavy load), you can automatically scale each service, can load balance at service level and faster disaster recovery.
+Start with some Architecture styles to choose from: Monolithic, micro services, event driven, severless (lambda). Keep some principles in mind like DRY and KISS. Since we have the non-functional requirements of highly available, scalable, heavy loads, let’s think what happens if use Monolithic. It is highly coupled meaning need to replicate the application across multi region (according to the NF requirements). It is not highly available and If crash, everything crash with single points of failure. It is not really scalable and vertical scaling is expensive, harder to handle heavy load as cant scale everything in the app so will have bottlenecks. Therefore choose Microservices (use Event driven Style or Choreography) so that it is easier to deploy services regionally (multi region), each service is independant isolating failures (highly available), you can scale horizontally instead of vertically (both scalable and heavy load), you can automatically scale each service, can load balance at service level and faster disaster recovery.
 
-Since chosen Microservices (event driven), can consider some patterns. I googled and it seems that CQRS (Command Query Responsibility Segregation) is best so lets use it (decouples write and read queries e.g one micro service to manage order and another to read order )
+
 
 Lets design:
 1) need a client that users connect to. Assume some front end website or some mobile app. For simplicity, I will assume this front end website is a static SPA application so that I can use S3 + CloudFront for cost efficiency, scalability, and global reach. Use multiple cloud front
@@ -19,13 +19,16 @@ Lets design:
 Some Microservices that can be designed can be considered based on Domain Driven Design. So if want to model business domain, then can map some functions for example :  ordering, inventory, payment, shipping, notification etc. Each micro service will have its own associated DB that based on the DDD, a relevant DB can be chosen. E.G ordering micro service can use some relational database like aws aurora or dynamoDB (since requirement of multi az)
 
 
-Can use an asynchronous event bus like SQS (simple queue service) that will manage all the events . E.g the Ordering microservice will place an order event that is published to the SQS, and then other micro services can subscribe to the event. E.g Inventory will update levels after receive order, payment will charge the customer, shipping will prepare the order for shipping, notification will send email to customer etc. Each micro service can use AWS Lambda (server less) or AWS ECS (container micro services). I will choose AWS Lambda for auto scaling. Then I will need Nat Gateway since Lambda deployed in the VPC
+Can use combination of AWS Eventbridge and SQS for mixture of Choreography event driven architecture as well specific asynchronous workflows where need to be processed in sequence. e.g
+- An "Order Placed" event is published to EventBridge.
+- The inventory service subscribes to the event via EventBridge and updates stock levels.
+- The payment service subscribes to the event via EventBridge, but instead of processing directly, it enqueues a task in an SQS queue to process the payment asynchronously.
+- After payment is completed, the shipping service listens to a "Payment Processed" event and initiates shipping.
 
-3) Query API Gateway. This is for read request only (following CQRS). This is for queries from the client that are like fetching order history or checking product availability.
+Each micro service can use AWS Lambda (serverless) or AWS ECS (container micro services). I will choose AWS Lambda for auto scaling. Then I will need Nat Gateway since Lambda deployed in the VPC
 
-Then similarly, you have read micro services like order history or product catalog with their own event bus and own DB
 
-4) Since want multi region, need to set up cross region replication for database. Therefore use Aurora Global database. Need to set up route 53 for failover based routing to route users to primary and failover region. Then will use health checks and failover policies in route 53 to switch traffic to healthy region if fails. Can use route 53 health check to achieve Active- Active setup. One region will be primary DB, the other will be read replica with synchronous replication.
+3) Since want multi region, need to set up cross region replication for database. Therefore use Aurora Global database. Need to set up route 53 for failover based routing to route users to primary and failover region. Then will use health checks and failover policies in route 53 to switch traffic to healthy region if fails. Can use route 53 health check to achieve Active- Active setup. One region will be primary DB, the other will be read replica with synchronous replication.
 
 
 In terms of costs if compare lambda vs ECS:
